@@ -18,9 +18,9 @@ function Msg(list) {
     if (type === 'message') {
         return (<Message from={from} message={list}/>);
     } else if (type === 'response') {
-        return (<Response from={from} message={list} />);
+        return (<Response from={from} message={list}/>);
     } else if (type === 'typing') {
-        return (<Typing from={from} message={list} />);
+        return (<Typing from={from} message={list}/>);
     } else {
         return null;
     }
