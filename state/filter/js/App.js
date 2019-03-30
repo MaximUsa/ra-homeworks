@@ -1,11 +1,41 @@
 'use strict'
 
-const App = props => (
-  <div>
-    <Toolbar
-      filters={props.filters}
-      selected={'All'}
-      onSelectFilter={(filter) => console.log(filter)} />
-    <Portfolio projects={props.projects} />
-  </div>
-);
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            filters: 'All'
+        };
+    }
+
+    render() {
+
+        const filterClick = (filter) => {
+            this.setState({
+                filters: filter
+            });
+        };
+
+        const getProjects = (projects, filter) => {
+            if (filter === 'All') return projects;
+            let filteredProjects = [];
+            projects.map((project, i) => {
+                project.category === filter ? filteredProjects.push(project) : '';
+            })
+
+            return filteredProjects;
+        };
+
+        return (
+            <div>
+                <Toolbar
+                    filters={this.props.filters}
+                    selected={this.state.filters}
+                    onSelectFilter={(filter) => filterClick(filter)}/>
+                <Portfolio projects={getProjects(this.props.projects, this.state.filters)}/>
+            </div>
+
+        );
+    }
+
+}
