@@ -7,7 +7,7 @@ class App extends React.Component {
             first_name: 'Алексей',
             last_name: 'Иванов',
             age: 29,
-            nickname: 'anonimizer_me',
+            nickname: 'your nickname',
             is_married: false
         };
 
