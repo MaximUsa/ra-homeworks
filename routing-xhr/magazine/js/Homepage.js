@@ -1,6 +1,6 @@
 class Homepage extends React.Component {
     render() {
-        return (
+        return(
             <BrowserRouter>
                 <Switch>
                     <Route exact path='/routing-xhr/magazine/' component={Home}/>
@@ -12,6 +12,7 @@ class Homepage extends React.Component {
         );
     }
 }
+
 
 const Home = () => {
     return (
