@@ -1,35 +1,32 @@
-const {Select} = window['antd'];
+const {AutoComplete} = antd;
+const source = {
+    'new_building,': 'Квартира в новостройке',
+    'old_building,': 'Готовая квартира',
+    'countryhouse': 'Загородный дом'
+};
 
-const Option = Select.Option;
-
-class Autocomplete extends React.Component {
+class AutocompleteTest extends React.Component {
+    state = {
+        apartment: ''
+    };
 
     handleChange = (value) => {
-        console.log(`selected ${value}`);
-    }
-
-    handleFilter = (input, option) => {
-        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-    }
+        this.setState({
+            apartment: value
+        });
+    };
 
     render() {
+        const {apartment} = this.state;
         return (
-            <div>
-                Тип квартиры:
-                <br/>
-                <Select
-                    showSearch
-                    style={{width: "240px"}}
-                    defaultValue="on-build-apartment"
-                    placeholder="Выберите тип квартиры"
-                    optionFilterProp="children"
-                    onChange={this.handleChange}
-                    filterOption={this.handleFilter}>
-                    <Option value="on-build-apartment">Квартира в новостройке</Option>
-                    <Option value="ready-apartment">Готовая квартира</Option>
-                    <Option value="country-house">Загородный дом</Option>
-                </Select>
-            </div>
-        )
+            <AutoComplete
+                direction="down"
+                selectedPosition="above"
+                label="Тип квартиры"
+                source={source}
+                onChange={this.handleChange}
+                value={apartment}
+            />
+        );
     }
 }
