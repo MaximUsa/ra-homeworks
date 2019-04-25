@@ -18,39 +18,40 @@
 </head>
 
 <body>
+<div id="root" />
 
-  <script id="handlebars-app" type="text/x-handlebars-template">
-    <header class="info">
-      <h1>{{ title }} | <small> {{ today }}</small></h1>
-      
-      <section>
-        <p>Мудрость на сегодня: {{ quote }}</p>
-      </section>
-    </header>
-    
-    <main class="container">
-      {{#each articles}}
-        <article class="article">
-          <h2>{{subject}}</h1>
-          <p>{{body}}</p>
-        </article>
-      {{/each}}
-    </main>
-  </script>
+<script id="handlebars-app" type="text/x-handlebars-template">
+  <header class="info">
+    <h1>{{ title }} | <small> {{ today }}</small></h1>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
-  <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <section>
+      <p>Мудрость на сегодня: {{ quote }}</p>
+    </section>
+  </header>
 
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <main id="container" class="container">
+  </main>
+</script>
 
-  <script src="./js/articles.js"></script>
-  <script src="./js/application.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+<script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+<script src="./js/articles.js"></script>
+<script src="./js/application.js"></script>
+
+<script type="text/babel" src="./js/react/Article.js"></script>
+<script type="text/babel" src="./js/react/ArticleGrid.js"></script>
+<script type="text/babel" src="./js/react/App.js"></script>
+
+<script type="text/babel">
+  ReactDOM.render(<App articles={articles}/>, document.getElementById('container'))
+</script>
 </body>
 
 </html>

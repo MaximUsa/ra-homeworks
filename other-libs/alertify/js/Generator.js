@@ -16,19 +16,19 @@ class Site extends React.Component {
 
   render() {
     return (
-      <div className="row">
-        <header className="info col-sm-12">
-          <h1>Генератор случайных идентификаторов</h1>
-        </header>
-        <aside className="menu col-sm-12 col-md-4">
-          <button className="button" onClick={this.generate}>Получить новый идентификатор</button>
-        </aside>
-        <main className="ids col-sm-12 col-md-8">
-          <ul>
-            {this.state.ids.map(id => <li key={id}>{id}</li>)}
-          </ul>
-        </main>
-      </div>
+        <div className="row">
+          <header className="info col-sm-12">
+            <h1>Генератор случайных идентификаторов</h1>
+          </header>
+          <aside className="menu col-sm-12 col-md-4">
+            <button className="button" onClick={this.generate}>Получить новый идентификатор</button>
+          </aside>
+          <main className="ids col-sm-12 col-md-8">
+            <ul>
+              {this.state.ids.map(id => <li key={id}>{id}</li>)}
+            </ul>
+          </main>
+        </div>
     );
   }
 
@@ -38,6 +38,9 @@ class Site extends React.Component {
     this.setState(prevState => ({
       ids: [...prevState.ids, newId],
     }));
+
+
+    alertify.success(`Новый ID:${newId.length} символа`);
   }
 }
 
@@ -53,5 +56,5 @@ const makeid = (length = 12) => {
 }
 
 const random = (lower = 0, upper = 1, floating = true) => floating
-  ? Math.min(lower + (Math.random() * (upper - lower)), upper)
-  : lower + Math.floor(Math.random() * (upper - lower + 1))
+    ? Math.min(lower + (Math.random() * (upper - lower)), upper)
+    : lower + Math.floor(Math.random() * (upper - lower + 1))
